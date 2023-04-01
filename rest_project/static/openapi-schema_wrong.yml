@@ -1,0 +1,57 @@
+openapi: 3.0.2
+info:
+  title: 'Todo application'
+  version: '0.1'
+paths:
+  /api/todo/:
+    get:
+      operationId: listTodos
+      description: 'List of todo'
+      parameters: [ ]
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+          description: ''
+      tags:
+        - todos
+    post:
+      operationId: createTodo
+      description: 'Create todo'
+      parameters: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+          description: ''
+      tags:
+        - todos
+
+
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 150
+        description:
+          type: string
+          maxLength: 300
+      required:
+        - title
