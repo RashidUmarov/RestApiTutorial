@@ -3,6 +3,9 @@ info:
   title: API Schema
   version: ''
   description: API for todos
+servers:
+  - url: http://127.0.0.1:8000/
+    description: Dev server
 paths:
   /api/todo/:
     get:
